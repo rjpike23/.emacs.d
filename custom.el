@@ -7,7 +7,7 @@
  '(lsp-prefer-flymake nil)
  '(package-selected-packages
    (quote
-    (cider cider-decompile flycheck-clojure slime slime-company ag projectile-ripgrep ripgrep window-purpose smartparens company-web use-package flycheck moody diff-hl magit rainbow-delimiters projectile company-quickhelp paredit company company-lsp flx-ido lsp-javascript-flow lsp-javascript-typescript lsp-mode lsp-typescript smex web-mode web-mode-edit-element)))
+    (tide company-coq proof-general tuareg sml-mode cider cider-decompile flycheck-clojure slime slime-company ag projectile-ripgrep ripgrep window-purpose smartparens company-web use-package flycheck moody diff-hl magit rainbow-delimiters projectile company-quickhelp paredit company company-lsp flx-ido lsp-javascript-flow lsp-javascript-typescript lsp-mode lsp-typescript smex web-mode web-mode-edit-element)))
  '(show-paren-mode t)
  '(size-indication-mode t)
  '(tool-bar-mode nil))
