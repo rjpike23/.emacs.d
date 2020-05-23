@@ -7,7 +7,7 @@
  '(lsp-prefer-flymake nil)
  '(package-selected-packages
    (quote
-    (tide company-coq proof-general tuareg sml-mode cider cider-decompile flycheck-clojure slime slime-company ag projectile-ripgrep ripgrep window-purpose smartparens company-web use-package flycheck moody diff-hl magit rainbow-delimiters projectile company-quickhelp paredit company company-lsp flx-ido lsp-javascript-flow lsp-javascript-typescript lsp-mode lsp-typescript smex web-mode web-mode-edit-element)))
+    (merlin merlin-eldoc tuareg cider cider-decompile flycheck-clojure slime slime-company ag projectile-ripgrep ripgrep window-purpose smartparens company-web use-package flycheck moody diff-hl magit rainbow-delimiters projectile company-quickhelp paredit company company-lsp flx-ido lsp-javascript-flow lsp-javascript-typescript lsp-mode lsp-typescript smex web-mode web-mode-edit-element)))
  '(show-paren-mode t)
  '(size-indication-mode t)
  '(tool-bar-mode nil))
@@ -24,7 +24,7 @@
  '(font-lock-string-face ((t (:foreground "dark green"))))
  '(font-lock-type-face ((t (:foreground "black" :underline t))))
  '(font-lock-variable-name-face ((t (:foreground "black"))))
- '(mode-line ((t (:background "grey75" :foreground "black" :box (:line-width -1 :style released-button) :family "Calibri"))))
+ '(mode-line ((t (:background "grey75" :foreground "black" :box (:line-width -1 :style released-button) :family "Luxi sans"))))
  '(rainbow-delimiters-base-face ((t (:inherit nil :weight bold))))
  '(rainbow-delimiters-depth-1-face ((t (:inherit rainbow-delimiters-base-face :foreground "blue3"))))
  '(rainbow-delimiters-depth-2-face ((t (:inherit rainbow-delimiters-base-face :foreground "RoyalBlue2"))))

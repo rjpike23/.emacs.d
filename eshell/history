@@ -1,0 +1,5 @@
+cd ../../..
+cd ../../..
+cd ../..
+node target/fig-service/dulciana_figwheel.js
+node target/fig-service/dulciana_figwheel.js

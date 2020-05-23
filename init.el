@@ -4,7 +4,6 @@
 
 ;;; Editor defaults
 (add-to-list 'load-path "~/.emacs.d/lisp")
-(add-to-list 'exec-path "C:/Coq/bin")
 (setq auto-save-default nil)
 (setq make-backup-files nil)
 (setq visible-bell 1)
@@ -95,33 +94,35 @@
 (add-hook 'cider-repl-mode-hook #'lisp-mode-custom)
 
 ;;; JavaScript customizations
+(require 'lsp-mode)
 (require 'web-mode)
 (require 'smartparens)
+(lsp-register-client
+ (make-lsp-client :new-connection (lsp-stdio-connection
+                                   (lambda ()
+                                     `(,lsp-clients-typescript-server
+                                       ,@lsp-clients-typescript-server-args)))
+                  :activation-fn (lambda (filename major-mode)
+                                   (and (string-suffix-p ".js" filename t)
+                                        (eq major-mode 'web-mode)))
+                  :priority -1
+                  :ignore-messages '("readFile .*? requested by TypeScript but content not available")
+                  :server-id 'web-mode-jsts))
 
 (defun javascript-mode-custom ()
   "Javascript customizations."
   (flymake-mode -1)
-  (tide-setup)
-  (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically '(save-mode-enabled))
-  (eldoc-mode +1)
-  (company-mode)
+  (lsp)
   (smartparens-mode)
   (sp-use-paredit-bindings))
 
 (add-hook 'javascript-mode-hook #'javascript-mode-custom)
 (add-hook 'web-mode-hook #'javascript-mode-custom)
-(add-hook 'typescript-mode-hook #'javascript-mode-custom)
 (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
 (setq web-mode-enable-auto-quoting nil)
-(add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.ts[x]?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-
-;;; Coq customizations
-(defun coq-mode-custom ()
-  "Coq customizations"
-  (company-coq-mode))
-
-(add-hook 'coq-mode-hook #'coq-mode-custom)
+;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
+(require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
+;; ## end of OPAM user-setup addition for emacs / base ## keep this line
