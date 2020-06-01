@@ -5,3 +5,4 @@ ido.last
 .lsp-session-v1
 projectile-bookmarks.eld
 smex-items
+*.elc

@@ -7,6 +7,8 @@
 (setq auto-save-default nil)
 (setq make-backup-files nil)
 (setq visible-bell 1)
+(setq gc-cons-threshold (* 16 1024 1024))
+(setq read-process-output-max (* 4 1024 1024))
 (setq-default indent-tabs-mode nil)
 (setq-default truncate-lines t)
 (setq-default show-paren-mode t)
@@ -104,6 +106,7 @@
                                        ,@lsp-clients-typescript-server-args)))
                   :activation-fn (lambda (filename major-mode)
                                    (and (string-suffix-p ".js" filename t)
+                                        (string-suffix-p ".ts" filename t)
                                         (eq major-mode 'web-mode)))
                   :priority -1
                   :ignore-messages '("readFile .*? requested by TypeScript but content not available")
@@ -112,13 +115,15 @@
 (defun javascript-mode-custom ()
   "Javascript customizations."
   (flymake-mode -1)
-  (lsp)
+  (yas-minor-mode)
   (smartparens-mode)
-  (sp-use-paredit-bindings))
+  (sp-use-paredit-bindings)
+  (lsp))
 
 (add-hook 'javascript-mode-hook #'javascript-mode-custom)
 (add-hook 'web-mode-hook #'javascript-mode-custom)
-(setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
+(add-hook 'typescript-mode-hook #'javascript-mode-custom)
+(setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'") ("tsx" . "\\.ts[x]?]]'")))
 (setq web-mode-enable-auto-quoting nil)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
@@ -126,3 +131,5 @@
 ;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
 (require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
 ;; ## end of OPAM user-setup addition for emacs / base ## keep this line
+
+;; init.el ends here
