@@ -118,7 +118,8 @@
   (yas-minor-mode)
   (smartparens-mode)
   (sp-use-paredit-bindings)
-  (lsp))
+  (lsp)
+  (flycheck-add-next-checker 'lsp 'javascript-eslint))
 
 (add-hook 'javascript-mode-hook #'javascript-mode-custom)
 (add-hook 'web-mode-hook #'javascript-mode-custom)
