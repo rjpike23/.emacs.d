@@ -4,6 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(global-display-line-numbers-mode t)
+ '(lsp-auto-guess-root t)
  '(lsp-prefer-flymake nil)
  '(package-selected-packages
    '(use-package ag caml cider clojure-mode company company-lsp diff-hl flycheck flycheck-clojure lsp-mode magit markdown-mode merlin merlin-eldoc moody paredit projectile rainbow-delimiters slime slime-company smartparens treemacs tuareg typescript-mode web-completion-data web-mode web-mode-edit-element window-purpose yasnippet auto-complete flymake-easy iedit npm-mode js-react-redux-yasnippets mocha-snippets react-snippets yasnippet-snippets lsp-treemacs lsp-ui cider-decompile projectile-ripgrep ripgrep company-web company-quickhelp flx-ido lsp-javascript-flow lsp-javascript-typescript lsp-typescript smex))
