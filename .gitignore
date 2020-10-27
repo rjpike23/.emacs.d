@@ -1,4 +1,7 @@
 auto-save-list/
+.cache/
+.dap-breakpoints
+eclipse.jdt.ls/
 elpa/
 transient/
 ido.last
@@ -6,3 +9,4 @@ ido.last
 projectile-bookmarks.eld
 smex-items
 *.elc
+workspace/

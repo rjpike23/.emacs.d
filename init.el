@@ -130,6 +130,33 @@
 (add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx?\\'" . web-mode))
+
+;;; Java customizations
+(require 'dap-mode)
+(require 'dap-java)
+(require 'lsp-java)
+
+(defun java-mode-custom ()
+  "Java mode customizations."
+  (lsp))
+
+(add-hook 'java-mode-hook #'java-mode-custom)
+
+;;; Python customizations
+(require 'lsp-python-ms)
+(require 'dap-python)
+(require 'conda)
+(setq lsp-python-ms-auto-install-server t)
+(custom-set-variables '(conda-anaconda-home (expand-file-name "~/../../miniconda3")))
+(setq conda-env-home-directory (expand-file-name "~/../../miniconda3"))
+
+(defun python-mode-custom ()
+  "Python customizations."
+  (conda-env-initialize-eshell)
+  (lsp))
+
+(add-hook 'python-mode-hook #'python-mode-custom)
+
 ;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
 (require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
 ;; ## end of OPAM user-setup addition for emacs / base ## keep this line
