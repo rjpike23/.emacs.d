@@ -77,8 +77,14 @@
 
 (add-hook 'prog-mode-hook 'prog-mode-custom)
 
+;;; Org mode customizations
+(defun org-mode-custom ()
+  "Org mode customizations"
+  (variable-pitch-mode)
+  (visual-line-mode))
+
 ;;; Lisp (elisp + Common Lisp) customizations.
-(setq inferior-lisp-program "sbcl")
+(setq inferior-lisp-program "sbcl --dynamic-space-size 8096")
 (setq slime-contribs '(slime-fancy slime-company))
 
 (defun lisp-mode-custom ()
@@ -156,6 +162,15 @@
   (lsp))
 
 (add-hook 'python-mode-hook #'python-mode-custom)
+
+;;; Scala customizations
+(require 'lsp-metals)
+
+(defun scala-mode-custom ()
+  "Scala customizations."
+  (lsp))
+
+(add-hook 'scala-mode-hook #'scala-mode-custom)
 
 ;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
 (require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
