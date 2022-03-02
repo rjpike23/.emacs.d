@@ -8,7 +8,7 @@
  '(lsp-auto-guess-root t)
  '(lsp-prefer-flymake nil)
  '(package-selected-packages
-   '(sbt-mode lsp-metals scala-mode company-coq coq-commenter proof-general lsp-java lsp-python-ms conda dap-mode use-package ag caml cider clojure-mode company company-lsp diff-hl flycheck flycheck-clojure lsp-mode magit markdown-mode merlin merlin-eldoc moody paredit projectile rainbow-delimiters slime slime-company smartparens treemacs tuareg typescript-mode web-completion-data web-mode web-mode-edit-element window-purpose yasnippet auto-complete flymake-easy iedit npm-mode mocha-snippets react-snippets yasnippet-snippets lsp-treemacs lsp-ui cider-decompile projectile-ripgrep ripgrep company-web company-quickhelp flx-ido smex))
+   '(sparql-mode yaml-mode sbt-mode lsp-metals scala-mode company-coq coq-commenter proof-general lsp-java lsp-python-ms conda dap-mode use-package ag caml cider clojure-mode company company-lsp diff-hl flycheck flycheck-clojure lsp-mode magit markdown-mode merlin merlin-eldoc moody paredit projectile rainbow-delimiters slime slime-company smartparens treemacs tuareg typescript-mode web-completion-data web-mode web-mode-edit-element window-purpose yasnippet auto-complete flymake-easy iedit npm-mode mocha-snippets react-snippets yasnippet-snippets lsp-treemacs lsp-ui cider-decompile projectile-ripgrep ripgrep company-web company-quickhelp flx-ido smex))
  '(show-paren-mode t)
  '(size-indication-mode t)
  '(tool-bar-mode nil))
