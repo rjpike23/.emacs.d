@@ -21,7 +21,7 @@
 (add-to-list 'package-archives
              '("gnu" . "http://elpa.gnu.org/packages/") t)
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.org/packages/") t)
+	     '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (package-initialize)
 (package-install-selected-packages)
 
@@ -41,6 +41,8 @@
 (add-to-list 'purpose-user-regexp-purposes '("cider\\-[^r].*". cider))
 (add-to-list 'purpose-user-regexp-purposes '("cider\\-r.*" . clj-repl))
 (purpose-compile-user-configuration)
+;; Treemacs python finding logic is broken on freebsd:
+(setq treemacs-python-executable "/usr/local/bin/python")
 
 ;;; Completion and ido
 (require 'company)
@@ -105,18 +107,6 @@
 (require 'lsp-mode)
 (require 'web-mode)
 (require 'smartparens)
-(lsp-register-client
- (make-lsp-client :new-connection (lsp-stdio-connection
-                                   (lambda ()
-                                     `(,lsp-clients-typescript-server
-                                       ,@lsp-clients-typescript-server-args)))
-                  :activation-fn (lambda (filename major-mode)
-                                   (and (string-suffix-p ".js" filename t)
-                                        (string-suffix-p ".ts" filename t)
-                                        (eq major-mode 'web-mode)))
-                  :priority -1
-                  :ignore-messages '("readFile .*? requested by TypeScript but content not available")
-                  :server-id 'web-mode-jsts))
 
 (defun javascript-mode-custom ()
   "Javascript customizations."
@@ -171,7 +161,3 @@
   (lsp))
 
 (add-hook 'scala-mode-hook #'scala-mode-custom)
-
-;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
-(require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
-;; ## end of OPAM user-setup addition for emacs / base ## keep this line
