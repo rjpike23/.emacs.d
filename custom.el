@@ -3,11 +3,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(conda-anaconda-home (expand-file-name "~/../../miniconda3"))
  '(global-display-line-numbers-mode t)
  '(lsp-auto-guess-root t)
+ '(lsp-disabled-clients '(deno-ls))
  '(lsp-prefer-flymake nil)
  '(package-selected-packages
-   '(lsp-java lsp-python-ms conda dap-mode use-package ag caml cider clojure-mode company company-lsp diff-hl flycheck flycheck-clojure lsp-mode magit markdown-mode merlin merlin-eldoc moody paredit projectile rainbow-delimiters slime slime-company smartparens treemacs tuareg typescript-mode web-completion-data web-mode web-mode-edit-element window-purpose yasnippet auto-complete flymake-easy iedit npm-mode mocha-snippets react-snippets yasnippet-snippets lsp-treemacs lsp-ui cider-decompile projectile-ripgrep ripgrep company-web company-quickhelp flx-ido smex))
+   '(dap-mode conda use-package ag caml cider clojure-mode company diff-hl flycheck flycheck-clojure magit markdown-mode moody paredit projectile rainbow-delimiters slime slime-company smartparens treemacs tuareg typescript-mode web-completion-data web-mode web-mode-edit-element window-purpose yasnippet auto-complete flymake-easy iedit npm-mode mocha-snippets react-snippets yasnippet-snippets cider-decompile projectile-ripgrep ripgrep company-web company-quickhelp flx-ido smex))
  '(show-paren-mode t)
  '(size-indication-mode t)
  '(tool-bar-mode nil))

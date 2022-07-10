@@ -7,8 +7,8 @@
 (setq auto-save-default nil)
 (setq make-backup-files nil)
 (setq visible-bell 1)
-(setq gc-cons-threshold (* 16 1024 1024))
-(setq read-process-output-max (* 4 1024 1024))
+(setq gc-cons-threshold (* 4 1024 1024))
+(setq read-process-output-max (* 1 1024 1024))
 (setq-default indent-tabs-mode nil)
 (setq-default truncate-lines t)
 (setq-default show-paren-mode t)
@@ -18,10 +18,12 @@
 
 ;;; Config package manager
 (require 'package)
-(add-to-list 'package-archives
-             '("gnu" . "http://elpa.gnu.org/packages/") t)
+;; (add-to-list 'package-archives
+;;              '("gnu" . "http://elpa.gnu.org/packages/") t)
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (package-initialize)
 (package-install-selected-packages)
 
@@ -99,18 +101,18 @@
 (require 'lsp-mode)
 (require 'web-mode)
 (require 'smartparens)
-(lsp-register-client
- (make-lsp-client :new-connection (lsp-stdio-connection
-                                   (lambda ()
-                                     `(,lsp-clients-typescript-server
-                                       ,@lsp-clients-typescript-server-args)))
-                  :activation-fn (lambda (filename major-mode)
-                                   (and (string-suffix-p ".js" filename t)
-                                        (string-suffix-p ".ts" filename t)
-                                        (eq major-mode 'web-mode)))
-                  :priority -1
-                  :ignore-messages '("readFile .*? requested by TypeScript but content not available")
-                  :server-id 'web-mode-jsts))
+;; (lsp-register-client
+;;  (make-lsp-client :new-connection (lsp-stdio-connection
+;;                                    (lambda ()
+;;                                      `(,lsp-clients-typescript-server
+;;                                        ,@lsp-clients-typescript-server-args)))
+;;                   :activation-fn (lambda (filename major-mode)
+;;                                    (and (string-suffix-p ".js" filename t)
+;;                                         (string-suffix-p ".ts" filename t)
+;;                                         (eq major-mode 'web-mode)))
+;;                   :priority -1
+;;                   :ignore-messages '("readFile .*? requested by TypeScript but content not available")
+;;                   :server-id 'web-mode-jsts))
 
 (defun javascript-mode-custom ()
   "Javascript customizations."
@@ -118,6 +120,8 @@
   (yas-minor-mode)
   (smartparens-mode)
   (sp-use-paredit-bindings)
+  (setq lsp-disabled-clients '(deno-ls))
+  (setq lsp-clients-typescript-server-args '("--stdio" "--tsserver-log-file" "./.log"))
   (lsp)
   (flycheck-add-next-checker 'lsp 'javascript-eslint))
 
@@ -156,7 +160,3 @@
   (lsp))
 
 (add-hook 'python-mode-hook #'python-mode-custom)
-
-;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
-(require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
-;; ## end of OPAM user-setup addition for emacs / base ## keep this line
