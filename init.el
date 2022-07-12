@@ -15,6 +15,9 @@
 (setq-default size-indication-mode t)
 (global-auto-revert-mode t)
 (add-to-list 'default-frame-alist '(background-color . "ivory"))
+;; Treemacs python finding logic is broken on freebsd:
+(if (eq system-type 'berkeley-unix)
+    (setq treemacs-python-executable "/usr/local/bin/python"))
 
 ;;; Config package manager
 (require 'package)
@@ -41,8 +44,7 @@
 (add-to-list 'purpose-user-regexp-purposes '("cider\\-[^r].*". cider))
 (add-to-list 'purpose-user-regexp-purposes '("cider\\-r.*" . clj-repl))
 (purpose-compile-user-configuration)
-;; Treemacs python finding logic is broken on freebsd:
-(setq treemacs-python-executable "/usr/local/bin/python")
+(purpose-x-magit-single-on)
 
 ;;; Completion and ido
 (require 'company)
@@ -80,10 +82,14 @@
 (add-hook 'prog-mode-hook 'prog-mode-custom)
 
 ;;; Org mode customizations
+(require 'ob-js)
 (defun org-mode-custom ()
   "Org mode customizations"
   (variable-pitch-mode)
-  (visual-line-mode))
+  (visual-line-mode)
+  (org-babel-do-load-languages 'org-babel-load-languages
+                               '((js . t)
+                                 (emacs-lisp . t))))
 
 ;;; Lisp (elisp + Common Lisp) customizations.
 (setq inferior-lisp-program "sbcl --dynamic-space-size 8096")
